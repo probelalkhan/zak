@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
+
+
+    <TextView
+        android:id="@+id/textViewDate"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="12-08-2017 12:22:22" />
+
+
+    <TextView
+        android:id="@+id/textViewTemp1"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="27.7" />
+
+
+    <TextView
+        android:id="@+id/textViewTemp2"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="26.7" />
+
+
+    <TextView
+        android:id="@+id/textViewDiff"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="1" />
+
+</LinearLayout>
