@@ -26,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -211,6 +212,16 @@ public class TemperatureFragment extends Fragment {
         temperatureChart.setData(data);
 
         XAxis xAxis = temperatureChart.getXAxis();
+
+        YAxis leftAxis = temperatureChart.getAxisLeft();
+        YAxis rightAxis = temperatureChart.getAxisRight();
+
+        leftAxis.setAxisMaximum(50);
+        leftAxis.setAxisMinimum(0);
+        rightAxis.setAxisMaximum(50);
+        rightAxis.setAxisMinimum(0);
+
+
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
