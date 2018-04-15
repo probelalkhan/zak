@@ -120,10 +120,10 @@ public class TemperatureFragment extends Fragment {
             public void run() {
                 if (keepRunning) {
                     loadTemperatureValues();
-                    handler.postDelayed(this, 1000);
+                    handler.postDelayed(this, 3000);
                 }
             }
-        }, 1000);
+        }, 3000);
 
     }
 
@@ -154,6 +154,11 @@ public class TemperatureFragment extends Fragment {
                             }
 
                             Temperature p = temperatureList.get(temperatureList.size() - 1);
+
+                            if(p.getTemp1() > Constants.T1_MAX || p.getTemp1() < Constants.T1_MIN || p.getTemp2() > Constants.T2_MAX || p.getTemp2() < Constants.T2_MIN){
+                                new MyNotificationManager(getActivity()).addNotification();
+                            }
+
 
                             loadGraph(temperatureList);
 

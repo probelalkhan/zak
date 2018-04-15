@@ -105,7 +105,6 @@ public class PressureFragment extends Fragment {
         pressureChart = view.findViewById(R.id.pressureChart);
 
 
-
         final Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {
@@ -149,6 +148,9 @@ public class PressureFragment extends Fragment {
 
                             Pressure p = pressureList.get(pressureList.size() - 1);
 
+                            if (p.getPressure1() > Constants.P1_MAX || p.getPressure1() < Constants.P1_MIN || p.getPressure2() > Constants.P1_MAX || p.getPressure2() < Constants.P2_MIN) {
+                                new MyNotificationManager(getActivity()).addNotification();
+                            }
 
                             loadGraph(pressureList);
 

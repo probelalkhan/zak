@@ -4,6 +4,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v7.app.NotificationCompat;
 
 import net.simplifiedlearning.zakariaproject.R;
@@ -22,9 +24,11 @@ public class MyNotificationManager {
     }
 
     public void addNotification() {
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(mCtx)
                         .setSmallIcon(R.mipmap.ic_launcher)
+                        .setSound(alarmSound)
                         .setContentTitle("My notification") //change it to what you want to be displayed
                         .setContentText("Hello World!");
 
