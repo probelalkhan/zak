@@ -10,4 +10,5 @@ public final class EndPoints {
     public static final String URL_LOGIN = ROOT_URL + "login";
     public static final String URL_TEMPERATURE = ROOT_URL + "temperature";
     public static final String URL_PRESSURE = ROOT_URL + "pressure";
+    public static final String URL_MIN_MAX = ROOT_URL + "minmax";
 }

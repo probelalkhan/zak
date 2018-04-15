@@ -4,11 +4,15 @@ package net.simplifiedlearning.zakariaproject.helper;
  * Created by Belal on 10/1/2017.
  */
 
-public interface Constants {
+public final class Constants {
 
-    int MIN_TEMP_VALUE = 10;
-    int MAX_TEMP_VALUE = 1000;
+    public static int T1_MIN = 0;
+    public static int T1_MAX = 0;
+    public static int T2_MIN = 0;
+    public static int T2_MAX = 0;
 
-    int MIN_PRESS_VALUE = 10;
-    int MAX_PRESS_VALUE = 1000;
+    public static int P1_MIN = 0;
+    public static int P1_MAX = 0;
+    public static int P2_MIN = 0;
+    public static int P2_MAX = 0;
 }

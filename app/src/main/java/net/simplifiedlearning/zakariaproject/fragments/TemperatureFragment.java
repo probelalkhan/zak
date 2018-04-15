@@ -108,6 +108,8 @@ public class TemperatureFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         temperatureList = new ArrayList<>();
+        adapter = new TemperatureAdapter(getActivity(), temperatureList);
+        recyclerView.setAdapter(adapter);
         temperatureChart = view.findViewById(R.id.temperatureChart);
 
 
@@ -153,18 +155,9 @@ public class TemperatureFragment extends Fragment {
 
                             Temperature p = temperatureList.get(temperatureList.size() - 1);
 
-                            if (p.getTemp1() < Constants.MIN_PRESS_VALUE) {
-                                new MyNotificationManager(getActivity()).addNotification();
-                            }
-
-                            if (p.getTemp2() > Constants.MAX_PRESS_VALUE) {
-                                new MyNotificationManager(getActivity()).addNotification();
-                            }
-
                             loadGraph(temperatureList);
 
-                            adapter = new TemperatureAdapter(getActivity(), temperatureList);
-                            recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
 
 
                         } catch (JSONException e) {

@@ -99,7 +99,12 @@ public class PressureFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
 
         pressureList = new ArrayList<>();
+        adapter = new PressureAdapter(getActivity(), pressureList);
+        recyclerView.setAdapter(adapter);
+
         pressureChart = view.findViewById(R.id.pressureChart);
+
+
 
         final Handler handler = new Handler();
 
@@ -144,19 +149,10 @@ public class PressureFragment extends Fragment {
 
                             Pressure p = pressureList.get(pressureList.size() - 1);
 
-                            if (p.getPressure1() < Constants.MIN_PRESS_VALUE) {
-                                new MyNotificationManager(getActivity()).addNotification();
-                            }
-
-                            if (p.getPressure2() > Constants.MAX_PRESS_VALUE) {
-                                new MyNotificationManager(getActivity()).addNotification();
-                            }
 
                             loadGraph(pressureList);
 
-                            adapter = new PressureAdapter(getActivity(), pressureList);
-                            recyclerView.setAdapter(adapter);
-
+                            adapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
