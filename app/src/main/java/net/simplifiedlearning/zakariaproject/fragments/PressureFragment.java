@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -79,6 +80,11 @@ public class PressureFragment extends Fragment {
         mManager = new MyNotificationManager(getActivity());
 
         keepRunning = true;
+
+        WebView webView = view.findViewById(R.id.webView);
+        webView.loadUrl(Constants.URL_PRESS_GRAPH);
+        webView.getSettings().setJavaScriptEnabled(true);
+
         view.findViewById(R.id.buttonTemperature).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

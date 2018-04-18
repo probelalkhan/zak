@@ -55,13 +55,13 @@ public class GraphActivity extends AppCompatActivity {
                             Constants.T1_MIN = temp.getInt(0);
                             Constants.T1_MAX = temp.getInt(1);
                             Constants.T2_MIN = temp.getInt(2);
-                            Constants.T1_MAX = temp.getInt(3);
+                            Constants.T2_MAX = temp.getInt(3);
 
 
                             Constants.P1_MIN = press.getInt(0);
                             Constants.P1_MAX = press.getInt(1);
                             Constants.P2_MIN = press.getInt(2);
-                            Constants.P1_MAX = press.getInt(3);
+                            Constants.P2_MAX = press.getInt(3);
 
 
                         } catch (JSONException e) {

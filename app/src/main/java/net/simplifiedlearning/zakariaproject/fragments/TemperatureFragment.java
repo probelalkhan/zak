@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,13 +68,11 @@ public class TemperatureFragment extends Fragment {
     RecyclerView recyclerView;
     TemperatureAdapter adapter;
     List<Temperature> temperatureList;
-
     LineChart temperatureChart;
-
     SimpleDateFormat sdf;
-
     boolean keepRunning = true;
 
+    WebView webView;
 
     @Nullable
     @Override
@@ -86,6 +85,10 @@ public class TemperatureFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         keepRunning = true;
+
+        webView = view.findViewById(R.id.webView);
+        webView.loadUrl(Constants.URL_TEMP_GRAPH);
+        webView.getSettings().setJavaScriptEnabled(true);
 
         view.findViewById(R.id.buttonPressure).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,10 +158,14 @@ public class TemperatureFragment extends Fragment {
 
                             Temperature p = temperatureList.get(temperatureList.size() - 1);
 
-                            if(p.getTemp1() > Constants.T1_MAX || p.getTemp1() < Constants.T1_MIN || p.getTemp2() > Constants.T2_MAX || p.getTemp2() < Constants.T2_MIN){
+                            if (p.getTemp1() > Constants.T1_MAX || p.getTemp1() < Constants.T1_MIN || p.getTemp2() > Constants.T2_MAX || p.getTemp2() < Constants.T2_MIN) {
                                 new MyNotificationManager(getActivity()).addNotification();
                             }
 
+                            Log.d("t1", Constants.T1_MAX + "");
+                            Log.d("t1", Constants.T1_MIN + "");
+                            Log.d("t2", Constants.T2_MAX + "");
+                            Log.d("t2", Constants.T2_MIN + "");
 
                             loadGraph(temperatureList);
 
@@ -210,6 +217,7 @@ public class TemperatureFragment extends Fragment {
         temperatureChart.setData(data);
 
         XAxis xAxis = temperatureChart.getXAxis();
+        xAxis.setAxisMinimum(4);
 
         YAxis leftAxis = temperatureChart.getAxisLeft();
         YAxis rightAxis = temperatureChart.getAxisRight();
@@ -220,12 +228,14 @@ public class TemperatureFragment extends Fragment {
         rightAxis.setAxisMinimum(0);
 
 
-        xAxis.setValueFormatter(new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                return sdf.format(new Date((long) value));
-            }
-        });
+
+//
+//        xAxis.setValueFormatter(new IAxisValueFormatter() {
+//            @Override
+//            public String getFormattedValue(float value, AxisBase axis) {
+//                return sdf.format(new Date((long) value));
+//            }
+//        });
 
         temperatureChart.invalidate();
 

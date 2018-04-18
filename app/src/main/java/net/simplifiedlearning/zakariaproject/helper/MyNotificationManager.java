@@ -23,7 +23,15 @@ public class MyNotificationManager {
         this.mCtx = mCtx;
     }
 
+    private boolean isNotificationVisible() {
+        Intent notificationIntent = new Intent(mCtx, GraphActivity.class);
+        PendingIntent test = PendingIntent.getActivity(mCtx, 0, notificationIntent, PendingIntent.FLAG_NO_CREATE);
+        return test != null;
+    }
+
     public void addNotification() {
+        if (isNotificationVisible())
+            return;
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(mCtx)

@@ -6,8 +6,15 @@
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/pressureChart"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="220dp" />
+
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"></WebView>
 
     <LinearLayout
         android:layout_width="match_parent"
